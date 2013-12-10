@@ -1,0 +1,118 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+html{
+    margin:0;
+}
+
+h1 {
+    font-size:3em;
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+
+body {
+    font-family:Arial, san-serif;
+}
+
+p {
+
+}
+
+
+.card {
+    height:21em;
+    background:#eee;
+    float: left;
+    padding:20px 2%;
+    margin:10px 1%;
+    background-size:cover;
+}
+
+.card.ui-listItem{
+    height:auto;
+    padding:0 1%;
+}
+
+.card.ui-listItem section{
+    display:none;
+}
+
+
+
+.centered{
+    height:100%;
+    display: table-cell;
+
+}
+
+
+@keyframes small {
+    from {
+        width:100%;
+    }
+    to {
+        width:100%
+    }
+}
+@keyframes medium {
+    from {
+        width:100%;
+    }
+    to {
+        width:100%
+    }
+}
+@keyframes large {
+    from {
+        width:100%;
+    }
+    to {
+        width:100%
+    }
+}
+
+
+@media (min-width: 0px) {
+    .deck.small-carousel .card {
+        position:absolute;
+        width: 98%;
+
+    }
+    .deck{
+         animation: small .001s;
+    }
+}
+
+@media (min-width: 640px) {
+  .deck.medium-list .card {
+    position:relative;
+    width: 98%;
+
+  }
+    .deck{
+         animation: medium .001s;
+    }
+
+}
+@media (min-width: 940px) {
+  .deck.large-grid-3 .card {
+    position:relative;
+    width: 30%;
+
+  }
+    .deck{
+         animation: large .001s;
+    }
+
+}
+
+
