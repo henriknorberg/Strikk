@@ -1,13 +1,13 @@
 Strikk
 ===============
-Proof of concept and example of cards adapting to different presentation views.
+Proof of concept and example of cards adapting to different presentation views with minimal use of javascript.
 
 ![Screendump](https://raw.github.com/henriknorberg/Strikk/master/screendump.jpg)
 
-Cards are basic unit that can expand and contract according to screen size and the deck they are in while
-decks are a collection of cards like which can be reprsented as Carousel, list and grid etc.
+Cards are basic unit that can expand and contract according to screen size, while
+decks are a collection of cards which can be represented as a carousel, list, grid or any other collection ui.
 
-Strik makes it possible to toggle between  deck types on different break points:
+Strik makes it possible to toggle between deck types on different break points, and dynamicly change the card type presentation:
 
 Consider the following markup. 
 
@@ -31,12 +31,15 @@ Example:
 var strikk = new Strikk($(".deck"));
 
 var slide = {
+    //which ui to attach to
     name:'slide',
+    
     //Callback right before rendering
     before : function (item) {
         var $item = $(item)
         $item.css("background-image","url("+$item.attr('data-bg-image')+")");
     },
+    
     //Callback allowing the UI to destroy itself
     after : function(item) {
         var $item = $(item)
@@ -46,4 +49,4 @@ var slide = {
 strikk.addUI(slide)
 
 ```
-Strikk is not a framework, and does not provide any UI elements. It's purpose is simply to provide a minimal infrastructure for responsive collections of UI. Currently only runs in Firfox and Chrome. 
+Strikk is not a framework, and does not provide any UI elements. It's purpose is simply to provide a minimal infrastructure for responsive collections of UI. 
