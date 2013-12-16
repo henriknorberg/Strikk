@@ -1,4 +1,4 @@
-var respUI = new ResponsiveUI($(".deck"))
+var strikk = new Strikk($(".deck"))
 
 //Call backs for decks
 var carousel = {
@@ -15,7 +15,10 @@ var carousel = {
             $(self.slides[self.index]).css("display","none")
             self.index < self.slides.length -1 ? self.index ++ : self.index = 0
             $(self.slides[self.index]).css("display","block")
-        },2000)
+        },2000);
+
+        //change headline
+        $("h1").text("This is a carousel");
     },
     after:function (){
         clearInterval(this.timer);
@@ -23,7 +26,7 @@ var carousel = {
     }
 }
 
-respUI.addUI(carousel)
+strikk.addUI(carousel)
 
 //Call backs for card types
 var card = {
@@ -35,6 +38,8 @@ var card = {
             "min-height":"12em"
         });
 
+        //change headline
+        $("h1").text("This is a grid");
     },
     after:function(item) {
         var $item = $(item)
@@ -44,7 +49,7 @@ var card = {
         })
     }
 };
-respUI.addUI(card);
+strikk.addUI(card);
 
 var slide = {
     name:'slide',
@@ -57,13 +62,15 @@ var slide = {
         $item.css('background-image','none')
     }
 }
-respUI.addUI(slide)
+strikk.addUI(slide)
 
 var listItem = {
     name:'listItem',
     before : function (item) {
         var $item = $(item)
         $item.css("background-image","url("+$item.attr('data-bg-image')+")")
+
+        $("h1").text("This is a list");
     },
     after : function(item) {
         var $item = $(item)
@@ -71,4 +78,4 @@ var listItem = {
     }
 }
 
-respUI.addUI(listItem)
+strikk.addUI(listItem)

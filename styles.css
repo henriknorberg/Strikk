@@ -8,7 +8,7 @@ html{
 
 h1 {
     font-size:4.5em;
-    text-transform:UpperCase;
+    text-transform:capitalize;
     margin-bottom: 0;
 }
 
@@ -33,11 +33,12 @@ p {
 
 .card {
     height:100%;
-    background: #EEE;
+    
     float: left;
     padding:20px 2%;
     margin:10px 1%;
     padding:0;
+    box-shadow: 0px 1px 6px #999;
 }
 
 
