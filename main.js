@@ -1,58 +1,74 @@
-self = this
-$('.deck').on('animationstart', function(e) {
-    var ui = getUI(this,e);
-    console.log(ui)
+var respUI = new ResponsiveUI($(".deck"))
 
-    $.each($(this).children(),function (i, item){
-        removeUIClass(this)
-        var uiType = getSubType(ui)
-        $(item).addClass('ui-'+uiType)
-        if (typeof self[uiType] == "function") self[uiType](item)
-    })
+//Call backs for decks
+var carousel = {
+    name:'carousel',
+    before:function (item){
+        //quick and dirty carousel logic
+        var self = this
+        this.index = 0
+        this.slides = $(item).children().css("display","none")
 
-    $("H1").text(e.originalEvent.animationName);
-
-
-});
-
-function slide(item) {
-    var $item = $(item)
-    $item.css("background-image","url("+$item.attr('data-bg-image')+")")
-}
-
-
-function getUI(el,ev){
-    //var nodes = e.currentTarget.ClassList
-    var state = ev.originalEvent.animationName
-    var ui = $(el).attr('class').split(state+'-')[1].split(' ')[0]
-    //console.log("-> ",ui)
-
-    return ui
-}
-
-function removeUIClass(el){
-    var $el = $(el)
-    var uiClass = $el.attr('class').split('ui-')[1]
-    $el.removeClass("ui-"+uiClass)
-
-     return $el
-}
-
-function getSubType(type){
-
-    switch (type) {
-        case "carousel":
-            return "slide"
-            break;
-
-        case "list":
-            return "listItem"
-            break;
-
-        default:
-            return "card"
-            break;
-
+        //set up a super simple carousel
+        $(this.slides[this.index]).css("display","block")
+        this.timer = setInterval(function(){
+            $(self.slides[self.index]).css("display","none")
+            self.index < self.slides.length -1 ? self.index ++ : self.index = 0
+            $(self.slides[self.index]).css("display","block")
+        },2000)
+    },
+    after:function (){
+        clearInterval(this.timer);
+        $(this.slides).css("display","block")
     }
-
 }
+
+respUI.addUI(carousel)
+
+//Call backs for card types
+var card = {
+    name:'card',
+    before:function (item) {
+        var $item = $(item)
+        $item.find(".top-image").css({
+            "background-image":"url("+$item.attr('data-bg-image')+")",
+            "min-height":"12em"
+        });
+
+    },
+    after:function(item) {
+        var $item = $(item)
+        $item.find(".top-image").css({
+            "background-image":"none",
+            "min-height":"0em"
+        })
+    }
+};
+respUI.addUI(card);
+
+var slide = {
+    name:'slide',
+    before : function (item) {
+        var $item = $(item)
+        $item.css("background-image","url("+$item.attr('data-bg-image')+")");
+    },
+    after : function(item) {
+        var $item = $(item)
+        $item.css('background-image','none')
+    }
+}
+respUI.addUI(slide)
+
+var listItem = {
+    name:'listItem',
+    before : function (item) {
+        var $item = $(item)
+        $item.css("background-image","url("+$item.attr('data-bg-image')+")")
+    },
+    after : function(item) {
+        var $item = $(item)
+        $item.css('background-image','none')
+    }
+}
+
+respUI.addUI(listItem)

@@ -7,11 +7,14 @@ html{
 }
 
 h1 {
-    font-size:3em;
+    font-size:4.5em;
+    text-transform:UpperCase;
+    margin-bottom: 0;
 }
 
 h2 {
-
+    font-size:3em;
+    margin-bottom:0;
 }
 
 h3 {
@@ -29,31 +32,138 @@ p {
 
 
 .card {
-    height:21em;
-    background:#eee;
+    height:100%;
+    background: #EEE;
     float: left;
     padding:20px 2%;
     margin:10px 1%;
-    background-size:cover;
+    padding:0;
 }
 
+
+.card .top-image{
+    width:100%;
+    background-size:cover;
+    baground-repeat:no-repeat;
+    background-position: center center;
+}
+
+/* List-items  */
 .card.ui-listItem{
     height:auto;
     padding:0 1%;
+    background-size:contain;
+    background-position:right;
+    background-repeat:no-repeat;
+}
+.card.ui-listItem header, .card.ui-listItem section{
+    float:left;
 }
 
-.card.ui-listItem section{
+.card.ui-listItem h2{
+    margin-top: 0.5em;
+    font-size:2em;
+}
+
+.card.ui-listItem h3{
+    margin: 24px;
+    color: #777;
+    font-size: 1em;
+}
+
+.card.ui-listItem p{
     display:none;
 }
 
-
+/* Slides */
+.card.ui-slide{
+    height:21em;
+    background-position:center;
+}
+.card.ui-slide h2{
+    margin-top: 0;
+    font-size:6em;
+}
+.card.ui-slide h3{
+    display:none;
+}
+.card.ui-slide p{
+    display:none;
+}
 
 .centered{
     height:100%;
     display: table-cell;
+    padding: 0 .75em;
+}
+
+
+@media (min-width: 0px) {
+    .deck.small-carousel .card {
+        position:absolute;
+        width: 95%;
+
+    }
+    .deck{
+        -webkit-animation: small .001s;
+         animation: small .001s;
+    }
+}
+
+@media (min-width: 640px) {
+  .deck.medium-list .card {
+    position:relative;
+    width: 98%;
+
+  }
+    .deck{
+        -webkit-animation: medium .001s;
+         animation: medium .001s;
+    }
+
+}
+@media (min-width: 940px) {
+  .deck.large-grid-3 .card {
+    position:relative;
+    width: 30%;
+
+  }
+    .deck{
+        -webkit-animation: large 1s;
+         animation: large .001s;
+    }
 
 }
 
+
+/*Animation triggering js*/
+
+
+/*Chrome animation*/
+@-webkit-keyframes small {
+    from {
+        width:100%;
+    }
+    to {
+        width:100%
+    }
+}
+@-webkit-keyframes medium {
+    from {
+        width:100%;
+    }
+    to {
+        width:100%
+    }
+}
+@-webkit-keyframes large {
+    from {
+        width:100%;
+    }
+    to {
+        width:100%
+    }
+}
 
 @keyframes small {
     from {
@@ -78,41 +188,6 @@ p {
     to {
         width:100%
     }
-}
-
-
-@media (min-width: 0px) {
-    .deck.small-carousel .card {
-        position:absolute;
-        width: 98%;
-
-    }
-    .deck{
-         animation: small .001s;
-    }
-}
-
-@media (min-width: 640px) {
-  .deck.medium-list .card {
-    position:relative;
-    width: 98%;
-
-  }
-    .deck{
-         animation: medium .001s;
-    }
-
-}
-@media (min-width: 940px) {
-  .deck.large-grid-3 .card {
-    position:relative;
-    width: 30%;
-
-  }
-    .deck{
-         animation: large .001s;
-    }
-
 }
 
 
