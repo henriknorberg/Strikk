@@ -55,6 +55,10 @@ var Strikk = function(el){
                 return "listItem"
                 break;
 
+            case "grid-3":
+                return "card-3"
+                break;
+
             default:
                 return "card"
                 break;

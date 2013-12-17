@@ -30,7 +30,7 @@ strikk.addUI(carousel)
 
 //Call backs for card types
 var card = {
-    name:'card',
+    name:'card-3',
     before:function (item) {
         var $item = $(item)
         $item.find(".top-image").css({
