@@ -32,7 +32,7 @@ var strikk = new Strikk($(".deck"));
 
 var slide = {
     //which ui to attach to
-    name:'slide',
+    name:'list-item',
     
     //Callback right before rendering
     before : function (item) {
